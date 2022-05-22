@@ -2,6 +2,7 @@ import React from "react";
 import robo from "../../assets/robo.png";
 import drone from "../../assets/drone.png";
 import car from "../../assets/car.png";
+import { Link } from "react-router-dom";
 
 const Tools = () => {
   const tools = [
@@ -51,7 +52,9 @@ const Tools = () => {
                   Available Quantity:{tool.availableQuantity}
                 </p>
                 <div class="card-actions">
-                  <button class="btn btn-primary">Order Now</button>
+                  <Link to="/purchase" class="btn btn-primary">
+                    Order Now
+                  </Link>
                 </div>
               </div>
             </div>
