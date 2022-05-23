@@ -1,36 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import robo from "../../assets/robo.png";
 import drone from "../../assets/drone.png";
 import car from "../../assets/car.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tools = () => {
-  const tools = [
-    {
-      img: "https://i.ibb.co/TrDJfFz/Untitled-design-3.png",
-      name: "Robot Internal Part",
-      price: "12$",
-      des: "",
-      minimumOrder: "45",
-      availableQuantity: "1000",
-    },
-    {
-      img: "https://i.ibb.co/KzwRKCp/Untitled-design-2.png",
-      price: "12$",
-      name: "Drone Internal Part",
-      des: "",
-      minimumOrder: "45",
-      availableQuantity: "1000",
-    },
-    {
-      img: "https://i.ibb.co/PDzV6C1/Untitled-design-1.png",
-      price: "12$",
-      name: "Car Internal Part",
-      des: "",
-      minimumOrder: "45",
-      availableQuantity: "1000",
-    },
-  ];
+  const [tools, setTools] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch("http://localhost:5000/parts")
+      .then((res) => res.json())
+      .then((data) => setTools(data));
+  }, []);
+  const handleToolDetails = (id) => {
+    navigate(`/purchase/${id}`);
+  };
   return (
     <div>
       <h1 className="text-3xl text-primary text-center m-5">
@@ -51,10 +35,14 @@ const Tools = () => {
                 <p className="font-bold">
                   Available Quantity:{tool.availableQuantity}
                 </p>
+
                 <div class="card-actions">
-                  <Link to="/purchase" class="btn btn-primary">
+                  <button
+                    class="btn btn-primary"
+                    onClick={() => handleToolDetails(tool._id)}
+                  >
                     Order Now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

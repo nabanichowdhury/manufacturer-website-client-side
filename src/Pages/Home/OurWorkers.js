@@ -1,4 +1,5 @@
 import React from "react";
+import worker from "../../assets/worker.jpg";
 
 const OurWorkers = () => {
   return (
@@ -10,10 +11,7 @@ const OurWorkers = () => {
 
       <div class="card lg:card-side bg-base-100 shadow-xl">
         <figure>
-          <img
-            className="w-96"
-            src="https://i.ibb.co/sg8ztTH/rob-lambert-9-Q-p-LLP-jm-A-unsplash.jpg"
-          />
+          <img className="w-96" src={worker} />
         </figure>
         <div class="card-body p-4">
           <h2 class="text-2xl text-center text-secondary">
