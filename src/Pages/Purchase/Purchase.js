@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
 import SnippetButton from "../SnippetButton/SnippetButton";
@@ -8,6 +9,8 @@ import SnippetButton from "../SnippetButton/SnippetButton";
 const Purchase = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const [order, setOrder] = useState(parseInt(item[0]?.minimumOrder));
+  const [availableitem, setAvailable] = useState(1000);
 
   useEffect(() => {
     fetch(`http://localhost:5000/part/${id}`)
@@ -16,10 +19,40 @@ const Purchase = () => {
         setItem(data);
       });
   }, [id]);
+
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
     <Loading></Loading>;
   }
+  const handlePurchase = (event) => {
+    event.preventDefault();
+    const purchase = {
+      purchaseId: id,
+      productName: item[0]?.name,
+      availableItems: item[0]?.availableQuantity,
+      minimumOrder: item[0]?.minimumOrder,
+      order: order,
+      user: user.email,
+      userName: user.displayName,
+    };
+    fetch(`http://localhost:5000/purchase`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(purchase),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast("Purchase done");
+        } else {
+          toast.error("You have already purchased it");
+        }
+      });
+  };
+
   return (
     <div>
       <div class="hero min-h-screen bg-base-200">
@@ -30,7 +63,13 @@ const Purchase = () => {
             <p class="py-6">{item[0]?.des}</p>
             <p>Available Items:{item[0]?.availableQuantity}</p>
             <p>MinimumOrder:{item[0]?.minimumOrder}</p>
-            <SnippetButton minimumOrder={item[0]?.minimumOrder}></SnippetButton>
+            <SnippetButton
+              order={order}
+              setAvailable={setAvailable}
+              setOrder={setOrder}
+              minimumOrder={item[0]?.minimumOrder}
+              available={item[0]?.availableQuantity}
+            ></SnippetButton>
           </div>
           <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div class="card-body">
@@ -59,7 +98,9 @@ const Purchase = () => {
                 />
               </div>
               <div class="form-control mt-6">
-                <button class="btn btn-primary">Final</button>
+                <button class="btn btn-primary" onClick={handlePurchase}>
+                  Final
+                </button>
               </div>
             </div>
           </div>

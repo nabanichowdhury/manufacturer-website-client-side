@@ -9,6 +9,8 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyReviews from "./Pages/Dashboard/MyReviews";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
           ></Route>
         </Route>
       </Routes>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
