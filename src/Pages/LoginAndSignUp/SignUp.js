@@ -9,6 +9,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../Loading/Loading";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -18,6 +19,8 @@ const SignUp = () => {
   const [signInWithGoogle, userGoogle, gloading, gerror] =
     useSignInWithGoogle(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [token] = useToken(user || userGoogle);
   const {
     register,
     formState: { errors },
@@ -46,7 +49,7 @@ const SignUp = () => {
       <p className="text-red-500">{error?.message || gerror?.message}</p>
     );
   }
-  if (user || userGoogle) {
+  if (token) {
     navigate("/");
   }
   return (

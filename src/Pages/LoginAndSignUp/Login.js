@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import {
   useSignInWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../Loading/Loading";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -26,10 +27,19 @@ const Login = () => {
     event.preventDefault();
     signInWithGoogle();
   };
+  const [token] = useToken(user || userGoogle);
   if (loading || gloading) {
     <Loading></Loading>;
   }
   let signInError;
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
   if (error || gerror) {
     signInError = (
       <p className="text-red-500">{error?.message || gerror?.message}</p>
