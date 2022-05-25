@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
@@ -7,10 +9,11 @@ import Loading from "../Loading/Loading";
 import SnippetButton from "../SnippetButton/SnippetButton";
 
 const Purchase = () => {
-  const { id } = useParams();
   const [item, setItem] = useState({});
   const [order, setOrder] = useState(parseInt(item[0]?.minimumOrder));
   const [availableitem, setAvailable] = useState(1000);
+
+  const { id } = useParams();
 
   useEffect(() => {
     fetch(`http://localhost:5000/part/${id}`)
@@ -18,23 +21,20 @@ const Purchase = () => {
       .then((data) => {
         setItem(data);
       });
-  }, [id]);
+  }, []);
 
-  const [user, loading, error] = useAuthState(auth);
-  if (loading) {
-    <Loading></Loading>;
-  }
   const handlePurchase = (event) => {
     event.preventDefault();
     const purchase = {
       purchaseId: id,
-      productName: item[0]?.name,
-      availableItems: item[0]?.availableQuantity,
-      minimumOrder: item[0]?.minimumOrder,
+      productName: item?.name,
+      availableItems: item?.availableQuantity,
+      minimumOrder: item?.minimumOrder,
       order: order,
       user: user.email,
       userName: user.displayName,
     };
+    console.log(item);
     fetch(`http://localhost:5000/purchase`, {
       method: "POST",
       headers: {
@@ -52,6 +52,11 @@ const Purchase = () => {
         }
       });
   };
+
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    <Loading></Loading>;
+  }
 
   return (
     <div>
@@ -106,7 +111,6 @@ const Purchase = () => {
           </div>
         </div>
       </div>
-      s
     </div>
   );
 };

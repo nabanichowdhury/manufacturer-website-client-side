@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -26,15 +26,17 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div class="flex-1 px-2 mx-2">Navbar Title</div>
+            <div class="flex-1 px-2 mx-2 text-primary font-bold text-5xl">
+              DashBoard
+            </div>
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal text-primary">
                 {/* <!-- Navbar menu content here --> */}
                 <li>
-                  <Link to="/dashboard/myorders">My Orders</Link>
+                  <Link to="/dashboard/orders">My Orders</Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/myreviews"> My Reviews </Link>
+                  <Link to="/dashboard/review"> My Reviews </Link>
                 </li>
                 <li>
                   <Link to="/dashboard"> My Profile </Link>
@@ -42,8 +44,9 @@ const Dashboard = () => {
               </ul>
             </div>
           </div>
-          {/* <!-- Page content here --> */}
-          Content
+          <div className="p-10">
+            <Outlet></Outlet>
+          </div>
         </div>
         <div class="drawer-side">
           <label for="my-drawer-3" class="drawer-overlay"></label>

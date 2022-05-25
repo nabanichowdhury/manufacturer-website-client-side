@@ -30,14 +30,8 @@ function App() {
         ></Route>
         <Route path="dashboard" element={<Dashboard></Dashboard>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
-          <Route
-            path="dashboard/myorders"
-            element={<MyOrders></MyOrders>}
-          ></Route>
-          <Route
-            path="dashboard/myreviews"
-            element={<MyReviews></MyReviews>}
-          ></Route>
+          <Route path="orders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="review" element={<MyReviews></MyReviews>}></Route>
         </Route>
       </Routes>
       <ToastContainer></ToastContainer>
