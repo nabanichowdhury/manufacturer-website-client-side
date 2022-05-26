@@ -13,6 +13,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Users from "./Pages/Dashboard/Users";
 import RequireAdmin from "./Pages/RequireAuth/RequireAdmin";
+import Blog from "./Pages/Blog";
+import MyPortfolio from "./Pages/MyPortfolio";
+import NotFound from "./NotFound";
 
 function App() {
   return (
@@ -22,6 +25,8 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
+        <Route path="/blogs" element={<Blog></Blog>}></Route>
+        <Route path="/portfolio" element={<MyPortfolio></MyPortfolio>}></Route>
         <Route
           path="/purchase/:id"
           element={
@@ -50,6 +55,7 @@ function App() {
             }
           ></Route>
         </Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
