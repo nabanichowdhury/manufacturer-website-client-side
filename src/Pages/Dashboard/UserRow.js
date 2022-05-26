@@ -22,6 +22,21 @@ const UserRow = ({ user, refetch }) => {
         }
       });
   };
+  const handleDelete = (email) => {
+    fetch(`https://polar-ocean-58245.herokuapp.com/user/${email}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deleteCount) {
+          toast.success(`user:${user.displayName} deleted`);
+        }
+      });
+  };
   return (
     <tr>
       <th>1</th>
@@ -34,7 +49,12 @@ const UserRow = ({ user, refetch }) => {
         )}
       </td>
       <td>
-        <button class="btn btn-xs btn-primary">Remove User</button>
+        <button
+          onClick={() => handleDelete(user.email)}
+          class="btn btn-xs btn-primary"
+        >
+          Remove User
+        </button>
       </td>
     </tr>
   );

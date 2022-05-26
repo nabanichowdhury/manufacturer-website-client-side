@@ -32,8 +32,8 @@ const Reviews = () => {
       <h1 className="text-secondary text-center text-2xl m-5">
         Our Best Reviews
       </h1>
-      <div className="w-20 h-1 bg-secondary mx-auto my-6"></div>
-      <div className="flex">
+      <div className="w-20 h-1 bg-secondary mx-auto my-6 "></div>
+      <div className="flex flex-wrap">
         {reviews.map((review) => (
           <div class="card w-80 bg-neutral text-neutral-content mx-5 ">
             <div class="card-body items-center text-center">

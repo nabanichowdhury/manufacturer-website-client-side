@@ -14,7 +14,7 @@ const BusinessSummery = () => {
         Our Service is Growing Day By day
       </h1>
       <div className="w-20 h-1 bg-secondary mx-auto my-6"></div>
-      <div className="flex items-center justify-evenly">
+      <div className="flex flex-wrap items-center justify-evenly">
         <div className="flex flex-col">
           <FontAwesomeIcon
             className="text-7xl text-primary font-extrabold "
