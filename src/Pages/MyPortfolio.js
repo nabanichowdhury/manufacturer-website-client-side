@@ -33,7 +33,7 @@ const MyPortfolio = () => {
               <h1 className="text-2xl text-white">
                 At present 2025 Undergrad in Computer Science Specialization in
                 Artificial Intelligence At Netaji Subhas University Of
-                Technology ,Dwarka ,New Delhi
+                Technology Dwarka New Delhi.
               </h1>
               <h1 className="text-2xl text-white">
                 <span className="text-purple-400">Skills:</span>
