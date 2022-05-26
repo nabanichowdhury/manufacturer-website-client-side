@@ -8,7 +8,7 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/parts")
+    fetch("https://polar-ocean-58245.herokuapp.com/parts")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
