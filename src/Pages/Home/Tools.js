@@ -20,12 +20,17 @@ const Tools = () => {
       <h1 className="text-3xl text-primary text-center m-5">
         Our most famous Tools
       </h1>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {tools.map((tool) => (
           <div>
-            <div class="card w-85   bg-neutral shadow-xl mx-4">
+            <div class="card w-85  bg-neutral shadow-xl mx-4">
               <figure class="px-10 pt-8">
-                <img src={tool.img} alt="Shoes" class="rounded-xl" />
+                <img
+                  src={tool.img}
+                  width="250px"
+                  alt="Shoes"
+                  class="rounded-xl"
+                />
               </figure>
               <div class="card-body items-center text-center">
                 <h2 class="card-title">{tool.name}</h2>

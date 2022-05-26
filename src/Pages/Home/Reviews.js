@@ -3,26 +3,26 @@ import React from "react";
 const Reviews = () => {
   const reviews = [
     {
-      img: "https://i.ibb.co/VHcv1rc/christina-wocintechchat-com-0-Zx1b-Dv5-BNY-unsplash.jpg",
-      name: "Rohita HULUHU",
+      img: "https://api.lorem.space/image/face?hash=88560",
+      name: "Rolika Josul",
       desc: " Great work",
       location: "Florida",
     },
     {
-      img: "https://i.ibb.co/0KrTFDn/ben-parker-Oh-KEl-Ok-Q3-RE-unsplash.jpg",
-      name: "Rohita HULUHU",
+      img: "https://api.lorem.space/image/face?hash=3174",
+      name: "Kolin Eka",
       desc: "Nice Products",
       location: "Florida",
     },
     {
       img: "https://i.ibb.co/7pgVscK/joseph-gonzalez-i-Fg-Rcq-Hznqg-unsplash.jpg",
-      name: "Rohita HULUHU",
+      name: "Telentu Ubantu",
       desc: "Qualityful products",
       location: "Florida",
     },
     {
-      img: "https://i.ibb.co/K2h3zd6/michael-dam-m-EZ3-Po-FGs-k-unsplash.jpg",
-      name: "Rohita HULUHU",
+      img: "https://api.lorem.space/image/face?hash=28212",
+      name: "Ikole Jkil",
       desc: "Best equipment",
       location: "Florida",
     },
