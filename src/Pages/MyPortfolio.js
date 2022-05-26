@@ -38,7 +38,8 @@ const MyPortfolio = () => {
               <h1 className="text-2xl text-white">
                 <span className="text-purple-400">Skills:</span>
                 HTML,CSS,FRAMEWORK:Bootstrap,tailwind,JAVASCRIPT,React.js,Firebase
-                Authentication system,Basics of NodeJs,Express and Mongodb
+                Authentication system,Learning basics of mongodb,nodejs and
+                express
               </h1>
               <h2 className="text-2xl  text-purple-400">
                 Link of my two recent project:
