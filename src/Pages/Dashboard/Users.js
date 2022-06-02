@@ -11,7 +11,7 @@ const Users = () => {
     refetch,
     data: users,
   } = useQuery("repoData", () =>
-    fetch("http://localhost:5000/user", {
+    fetch("https://polar-ocean-58245.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -22,7 +22,7 @@ const Users = () => {
     return <Loading></Loading>;
   }
   //   useEffect(() => {
-  //     fetch("http://localhost:5000/user", {
+  //     fetch("https://polar-ocean-58245.herokuapp.com/user", {
   //       method: "GET",
   //       headers: {
   //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -12,13 +12,13 @@ const AddProduct = () => {
     handleSubmit,
   } = useForm();
   // const { tools, isLoading } = useQuery("parts", () =>
-  //   fetch("http://localhost:5000/parts").then((res) => res.json())
+  //   fetch("https://polar-ocean-58245.herokuapp.com/parts").then((res) => res.json())
   // );
 
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/parts")
+    fetch("https://polar-ocean-58245.herokuapp.com/parts")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
@@ -50,7 +50,7 @@ const AddProduct = () => {
 
           //   send to your database
 
-          fetch("http://localhost:5000/parts", {
+          fetch("https://polar-ocean-58245.herokuapp.com/parts", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -16,7 +16,7 @@ const Purchase = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/part/${id}`)
+    fetch(`https://polar-ocean-58245.herokuapp.com/part/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
@@ -35,7 +35,7 @@ const Purchase = () => {
       userName: user.displayName,
     };
     console.log(item);
-    fetch(`http://localhost:5000/purchase`, {
+    fetch(`https://polar-ocean-58245.herokuapp.com/purchase`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
