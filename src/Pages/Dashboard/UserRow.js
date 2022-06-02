@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 const UserRow = ({ user, refetch }) => {
   const makeAdmin = () => {
-    fetch(`https://polar-ocean-58245.herokuapp.com/user/admin/${user.email}`, {
+    fetch(`http://localhost:5000/user/admin/${user.email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -16,14 +16,15 @@ const UserRow = ({ user, refetch }) => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         if (data.modifiedCount) {
-          refetch();
           toast.success("Successfully made an admin");
+          refetch();
         }
       });
   };
   const handleDelete = (email) => {
-    fetch(`https://polar-ocean-58245.herokuapp.com/user/${email}`, {
+    fetch(`http://localhost:5000/user/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -32,8 +33,9 @@ const UserRow = ({ user, refetch }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.deleteCount) {
+        if (data.deletedCount) {
           toast.success(`user:${user.displayName} deleted`);
+          refetch();
         }
       });
   };

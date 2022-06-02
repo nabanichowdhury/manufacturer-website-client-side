@@ -17,6 +17,10 @@ import Blog from "./Pages/Blog";
 import MyPortfolio from "./Pages/MyPortfolio";
 import NotFound from "./NotFound";
 
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import ManageOrders from "./Pages/Dashboard/ManageOrders";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
+
 function App() {
   return (
     <div>
@@ -51,6 +55,30 @@ function App() {
             element={
               <RequireAdmin>
                 <Users></Users>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageProducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts></ManageProducts>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddProduct></AddProduct>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageOrders"
+            element={
+              <RequireAdmin>
+                <ManageOrders></ManageOrders>
               </RequireAdmin>
             }
           ></Route>

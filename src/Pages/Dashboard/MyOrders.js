@@ -10,15 +10,12 @@ const MyOrders = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://polar-ocean-58245.herokuapp.com/purchase?user=${user.email}`,
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`http://localhost:5000/purchase?user=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           console.log(res);
           if (res.status === 401 || res.status === 403) {
